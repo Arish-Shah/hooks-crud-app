@@ -1,24 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+import AddUser from './components/AddUser';
+import UpdateUser from './components/UpdateUser';
+import Users from './components/Users';
+
+const App = () => {
+  const [editing, setEditing] = useState(false);
+  const [users, setUsers] = useState([
+    { id: 1, name: 'Arya Stark', username: 'needle' },
+    { id: 2, name: 'Sansa Stark', username: 'winterfellLady' },
+    { id: 3, name: 'Jon Snow', username: 'kinginnorth' }
+  ]);
+
+  let editHandler = (user) => {
+    setEditing(true);
+  }
+
+  let deleteHandler = (id) => {
+    let updatedUsers = { ...users };
+    let elIndex = updatedUsers.find(user => user.id === id);
+  }
+
+  let cancelHandler = () => {
+    setEditing(false);
+  }
+
+  let addUpdate = editing ? <UpdateUser cancelled={cancelHandler} /> : <AddUser />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>CRUD App with Hooks</h1>
+      <div className="flex-row">
+        <div className="flex-large">
+          {addUpdate}
+        </div>
+        <div className="flex-large">
+          <Users users={users} editing={editHandler} deleting={deleteHandler} />
+        </div>
+      </div>
     </div>
   );
 }
