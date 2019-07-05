@@ -7,9 +7,9 @@ import EditUser from './components/EditUser';
 const App = () => {
   //states
   const [users, setUsers] = useState([
-    { id: 1, name: 'Arish Shah', username: 'arizh' },
-    { id: 2, name: 'John Doe', username: 'jdoe' },
-    { id: 3, name: 'Peter Parker', username: 'pparker' }
+    { id: 1, name: 'Arish Rahil Shah', username: 'arizh' },
+    { id: 2, name: 'Felix Kjellberg', username: 'pewdiepie' },
+    { id: 3, name: 'Ozair K', username: 'mok' }
   ]);
   const [editing, setEditing] = useState({ state: false, editingUser: null });
 
