@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hooks-crud-app/static/css/main.fcefbb83.chunk.css",
+    "main.js": "/hooks-crud-app/static/js/main.30f9e9a5.chunk.js",
+    "main.js.map": "/hooks-crud-app/static/js/main.30f9e9a5.chunk.js.map",
+    "runtime~main.js": "/hooks-crud-app/static/js/runtime~main.2208486a.js",
+    "runtime~main.js.map": "/hooks-crud-app/static/js/runtime~main.2208486a.js.map",
+    "static/js/2.87fef826.chunk.js": "/hooks-crud-app/static/js/2.87fef826.chunk.js",
+    "static/js/2.87fef826.chunk.js.map": "/hooks-crud-app/static/js/2.87fef826.chunk.js.map",
+    "index.html": "/hooks-crud-app/index.html",
+    "precache-manifest.f79aeedaa36c7dad6587face1408fbad.js": "/hooks-crud-app/precache-manifest.f79aeedaa36c7dad6587face1408fbad.js",
+    "service-worker.js": "/hooks-crud-app/service-worker.js",
+    "static/css/main.fcefbb83.chunk.css.map": "/hooks-crud-app/static/css/main.fcefbb83.chunk.css.map"
+  }
+}
