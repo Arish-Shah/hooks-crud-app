@@ -1,41 +1,69 @@
 import React, { useState } from 'react';
 
-import AddUser from './components/AddUser';
-import UpdateUser from './components/UpdateUser';
 import Users from './components/Users';
+import AddUser from './components/AddUser';
+import EditUser from './components/EditUser';
 
 const App = () => {
-  const [editing, setEditing] = useState(false);
+  //states
   const [users, setUsers] = useState([
-    { id: 1, name: 'Arya Stark', username: 'needle' },
-    { id: 2, name: 'Sansa Stark', username: 'winterfellLady' },
-    { id: 3, name: 'Jon Snow', username: 'kinginnorth' }
+    { id: 1, name: 'Arish Shah', username: 'arizh' },
+    { id: 2, name: 'John Doe', username: 'jdoe' },
+    { id: 3, name: 'Peter Parker', username: 'pparker' }
   ]);
+  const [editing, setEditing] = useState({ state: false, editingUser: null });
 
-  let editHandler = (user) => {
-    setEditing(true);
+  //handlers
+  let deleteHandler = (id) => {
+    let updatedUsers = [...users];
+    let deleteIndex = updatedUsers.findIndex(user => user.id === id);
+    updatedUsers.splice(deleteIndex, 1);
+    setUsers(updatedUsers);
+    setEditing({ state: false, editingUser: null });
   }
 
-  let deleteHandler = (id) => {
-    let updatedUsers = { ...users };
-    let elIndex = updatedUsers.find(user => user.id === id);
+  let editHandler = (user) => {
+    setEditing({
+      state: true,
+      editingUser: {
+        id: user.id,
+        name: user.name,
+        username: user.username
+      }
+    });
+  }
+
+  let updateHandler = (user) => {
+    let updatedUsers = [...users];
+    let updateIndex = updatedUsers.findIndex(el => el.id === user.id);
+    updatedUsers[updateIndex] = user;
+    setUsers(updatedUsers);
+    setEditing({ state: false, editingUser: null })
   }
 
   let cancelHandler = () => {
-    setEditing(false);
+    setEditing({ state: false, editingUser: null });
   }
 
-  let addUpdate = editing ? <UpdateUser cancelled={cancelHandler} /> : <AddUser />;
+  let addHandler = (user) => {
+    let updatedUser = { ...user, id: users.length + 1 };
+    setUsers(users.concat(updatedUser));
+  }
+
+
+  let addOrUpdate = editing.state ?
+    <EditUser user={editing.editingUser} update={updateHandler} cancelled={cancelHandler} /> :
+    <AddUser added={addHandler} />;
 
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
       <div className="flex-row">
         <div className="flex-large">
-          {addUpdate}
+          {addOrUpdate}
         </div>
         <div className="flex-large">
-          <Users users={users} editing={editHandler} deleting={deleteHandler} />
+          <Users users={users} deleted={deleteHandler} edited={editHandler} />
         </div>
       </div>
     </div>

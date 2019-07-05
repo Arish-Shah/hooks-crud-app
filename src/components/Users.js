@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Users = ({ users, editing, deleting }) => {
+const Users = (props) => {
   return (
     <React.Fragment>
-      <h2>View users</h2>
+      <h1>View users</h1>
       <table>
         <thead>
           <tr>
@@ -14,14 +14,16 @@ const Users = ({ users, editing, deleting }) => {
         </thead>
         <tbody>
           {
-            users.map(user => {
+            props.users.map(user => {
               return (
                 <tr key={user.id}>
                   <td>{user.name}</td>
                   <td>{user.username}</td>
                   <td>
-                    <button className="muted-button" onClick={() => editing(user)}>Edit</button>
-                    <button className="muted-button" onClick={() => deleting(user.id)}>Delete</button>
+                    <button className="muted-button"
+                      onClick={() => props.edited(user)}>Edit</button>
+                    <button className="muted-button"
+                      onClick={() => props.deleted(user.id)}>Delete</button>
                   </td>
                 </tr>
               )
