@@ -1,6 +1,23 @@
 import React from 'react';
 
-const Users = (props) => {
+const Users = ({ users, edited, deleted }) => {
+  const displayUsers = users.length === 0 ?
+    (<tr><td colSpan="3">No users</td></tr>) :
+    users.map(user => {
+      return (
+        <tr key={user.id}>
+          <td>{user.name}</td>
+          <td>{user.username}</td>
+          <td>
+            <button className="muted-button"
+              onClick={() => edited(user)}>Edit</button>
+            <button className="muted-button"
+              onClick={() => deleted(user.id)}>Delete</button>
+          </td>
+        </tr>
+      )
+    });
+
   return (
     <React.Fragment>
       <h1>View users</h1>
@@ -13,22 +30,7 @@ const Users = (props) => {
           </tr>
         </thead>
         <tbody>
-          {
-            props.users.map(user => {
-              return (
-                <tr key={user.id}>
-                  <td>{user.name}</td>
-                  <td>{user.username}</td>
-                  <td>
-                    <button className="muted-button"
-                      onClick={() => props.edited(user)}>Edit</button>
-                    <button className="muted-button"
-                      onClick={() => props.deleted(user.id)}>Delete</button>
-                  </td>
-                </tr>
-              )
-            })
-          }
+          {displayUsers}
         </tbody>
       </table>
     </React.Fragment>

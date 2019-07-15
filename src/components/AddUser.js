@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
-const AddUser = (props) => {
+const AddUser = ({ added }) => {
   const [newUser, setNewUser] = useState({ name: '', username: '' });
 
   let formSubmitHandler = (event) => {
     event.preventDefault();
     if (newUser.name.trim() !== '' && newUser.username.trim() !== '') {
       setNewUser({ name: '', username: '' });
-      props.added(newUser);
+      added(newUser);
     } else return;
   }
 
