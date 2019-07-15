@@ -18,7 +18,7 @@ const AddUser = (props) => {
         <label>Name</label>
         <input type="text" name="name" value={newUser.name}
           onChange={event => setNewUser({ ...newUser, name: event.target.value })} />
-        <label>Userame</label>
+        <label>Username</label>
         <input type="text" name="username" value={newUser.username}
           onChange={event => setNewUser({ ...newUser, username: event.target.value })} />
         <button>Add new User</button>
