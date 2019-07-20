@@ -17,4 +17,4 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 
 #### Demo
 
-https://arizh.github.io/hooks-crud-app/
+https://arish-shah.github.io/hooks-crud-app/
